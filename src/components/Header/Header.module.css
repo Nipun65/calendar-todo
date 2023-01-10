@@ -1,0 +1,18 @@
+.header {
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.btnHover :hover {
+  background-color: #72a3a6;
+}
