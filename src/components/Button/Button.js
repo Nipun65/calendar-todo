@@ -1,4 +1,4 @@
-import styles from "./Button.module.css";
+import "./Button.module.css";
 
 const Button = (props) => {
   const clickHandler = () => {
