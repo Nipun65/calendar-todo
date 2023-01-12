@@ -1,13 +1,11 @@
 import styles from "./Daydate.module.css";
-import React from "react";
 
 const Daydate = (props) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
   const startYear = props.date.year;
   const startMonth = props.date.month;
 
-  let daywisedates = Array(7)
+  let daywisedates = Array(6)
     .fill()
     .map(() => Array(7).fill(0));
 
@@ -31,11 +29,22 @@ const Daydate = (props) => {
   fillTheArray(startMonth, startDayOfTheMonth, endDateOfTheMonth);
 
   const dateHandler = (event) => {
-    props.date.date = +event.target.textContent;
+    props.date.selectedDate = {
+      userYear: props.date.year,
+      userMonth: props.date.month,
+      userDate: +event.target.textContent,
+    };
     props.setValue(props.date);
   };
   return (
-    <div>
+    <div
+      className={`${styles["main-div"]} ${
+        props.selectedOption === "Year" ? styles["grid-item"] : ""
+      }`}
+    >
+      {props.selectedOption === "Year" && (
+        <div className={styles["month"]}>{props.month[props.date.month]}</div>
+      )}
       <div className={styles["days"]}>
         {days.map((value) => (
           <div key={Math.random()} className={styles["days-ele"]}>
@@ -45,17 +54,33 @@ const Daydate = (props) => {
       </div>
       <div>
         {daywisedates.map((value) => (
-          <div className={styles["array"]} key={Math.random()}>
+          <div
+            className={`${
+              props.selectedOption === "Year"
+                ? styles["array-year"]
+                : styles["array"]
+            }`}
+            key={Math.random()}
+          >
             {value.map((date, index) => {
               if (date) {
                 return (
                   <div
                     key={Math.random()}
-                    className={styles["array-element"]}
+                    className={`${
+                      props.selectedOption === "Year"
+                        ? styles["array-element-year"]
+                        : styles["array-element"]
+                    }`}
                     onClick={dateHandler}
                     style={
-                      props.date.date === date
+                      props.date.month === props.date.currentMonth &&
+                      props.date.date === date &&
+                      props.date.currentYear === +props.date.year
                         ? { backgroundColor: "#81d5ea" }
+                        : props.date.selectedDate.userDate === date &&
+                          props.date.month === props.date.selectedDate.userMonth
+                        ? { backgroundColor: "rgb(201,234,255)", opacity: 0.5 }
                         : {}
                     }
                   >

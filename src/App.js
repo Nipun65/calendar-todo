@@ -1,14 +1,21 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import { Fragment, useEffect, useState } from "react";
 import Daydate from "./components/Daydate/Daydate";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
+import "./App.css";
 function App() {
   const todayDate = new Date();
   const [date, setDate] = useState({
     year: todayDate.getFullYear(),
     month: todayDate.getMonth(),
     date: todayDate.getDate(),
+    currentYear: todayDate.getFullYear(),
+    currentMonth: todayDate.getMonth(),
+    selectedDate: {
+      userYear: 0,
+      userMonth: 0,
+      userDate: 0,
+    },
   });
 
   const Month = [
@@ -40,11 +47,42 @@ function App() {
       Currentyear++;
       if (Currentyear % 10 === 0) {
         yearsArray.push(Currentyear);
-
         setYears(yearsArray);
       }
     }
   }, []);
+
+  const [selectedOption, setSelectedOption] = useState("Month");
+  useEffect((value) => {}, [selectedOption]);
+  const handleOption = (value) => {
+    setSelectedOption(value);
+    setView("date");
+    setDate({ ...date });
+  };
+  const renderElements = (value, index) => {
+    const dateObj = {
+      year: date.year,
+      month: index,
+      date: date.date,
+      currentMonth: todayDate.getMonth(),
+      currentYear: todayDate.getFullYear(),
+      selectedDate: {
+        userYear: date.selectedDate.userYear,
+        userMonth: date.selectedDate.userMonth,
+        userDate: date.selectedDate.userDate,
+      },
+    };
+    return (
+      <Daydate
+        className="grid-item"
+        setValue={handleValue}
+        date={dateObj}
+        month={Month}
+        selectedOption={selectedOption}
+        key={Math.random()}
+      />
+    );
+  };
 
   const handleValue = (value) => {
     date.year = +date.year;
@@ -128,6 +166,7 @@ function App() {
       }
     }
   };
+
   const handleMonth = (value) => {
     const monthIndex = Month.findIndex((ele) => {
       return ele === value;
@@ -153,20 +192,45 @@ function App() {
       setYears(years);
     }
   };
+
+  const handleToday = () => {
+    date.year = todayDate.getFullYear();
+    date.month = todayDate.getMonth();
+    date.date = todayDate.getDate();
+    setView("date");
+    setDate({ ...date });
+  };
   return (
-    <div>
+    <Fragment>
       <Header
         setValue={handleValue}
         setView={handleView}
         date={date}
         view={view}
+        selectedOption={selectedOption}
+        setSelectedOption={handleOption}
+        setToday={handleToday}
       />
 
-      {view === "date" && <Daydate setValue={handleValue} date={date} />}
+      {view === "date" && selectedOption !== "Year" && (
+        <Daydate
+          setValue={handleValue}
+          date={date}
+          selectedOption={selectedOption}
+        />
+      )}
+
+      {selectedOption === "Year" && (
+        <div className="grid-container-year">
+          {Array(12)
+            .fill(0)
+            .map((value, index) => renderElements(value, index))}
+        </div>
+      )}
       {view !== "date" && (
         <Card data={view === "months" ? Month : years} setValue={handleMonth} />
       )}
-    </div>
+    </Fragment>
   );
 }
 

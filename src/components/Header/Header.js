@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
+import Dropdown from "../Dropdown/Dropdown";
+import Button from "../Button/Button";
 
 const Header = (props) => {
   let [year, setYear] = useState(props.date.year);
@@ -25,10 +27,18 @@ const Header = (props) => {
     "November",
     "December",
   ];
+  const list = ["Month", "Year"];
+
   let dateObj = {
     year: year,
     month: month,
     date: props.date.date,
+    currentYear: props.date.currentYear,
+    currentMonth: props.date.currentMonth,
+    selectedDate: props.date.selectedDate,
+  };
+  const selectedOption = (value) => {
+    props.setSelectedOption(value);
   };
 
   const backYearHandler = () => {
@@ -76,6 +86,7 @@ const Header = (props) => {
       props.setValue({ ...dateObj });
     }
   };
+
   const forwardMonthHandler = () => {
     if (
       props.view === "months" ||
@@ -105,74 +116,97 @@ const Header = (props) => {
       props.setView("multiyears");
     }
   };
+  const handleToday = (value) => {
+    props.setToday();
+  };
+
+  const getYearData = () => {
+    let textContent = "";
+    if (props.view === "date" && props.selectedOption !== "Year") {
+      textContent += Month[month] + " ";
+    }
+    if (props.view === "years") {
+      if (year % 10 !== 0) {
+        textContent += `${year - (year % 10) + 1} - ${
+          year - (year % 10) + 10
+        } `;
+      } else {
+        textContent += `${year - 9}-${year} `;
+      }
+    }
+    if (props.view === "date" || props.view === "months") {
+      textContent += year + " ";
+    }
+    if (props.view === "multiyears") {
+      textContent += `${year - (year % 100) + 1} - ${
+        year - (year % 100) + 100
+      } `;
+    }
+    return textContent;
+  };
 
   return (
     <div className={styles["header"]}>
-      <div className={styles["btnHover"]}>
+      <div className={`${styles["btnHover"]} ${styles["first-div"]}`}>
         {props.view !== "multiyears" && (
-          <button
+          <Button
             onClick={backYearHandler}
-            type="button"
-            className={styles["btn"]}
-          >
-            {"<<"}
-          </button>
+            classes={styles["btn"]}
+            textContent={"<<"}
+          />
         )}
-        <button
-          onClick={backMonthHandler}
-          type="button"
-          className={styles["btn"]}
-        >
-          {"<"}
-        </button>
+        {props.selectedOption !== "Year" && (
+          <Button
+            onClick={backMonthHandler}
+            classes={styles["btn"]}
+            disabled={props.date.year === 1}
+            textContent={"<"}
+          />
+        )}
+        <div className={styles["todaybtn-div"]}>
+          <Button
+            onClick={handleToday}
+            classes={styles["todaybtn"]}
+            textContent={"Today"}
+          />
+        </div>
       </div>
       <div
-        className={props.view !== "multiyears" ? styles["btnHover"] : ""}
-        style={{ minWidth: "50px", display: "flex", alignItems: "center" }}
+        className={`
+         ${
+           props.view !== "multiyears" && props.selectedOption !== "Year"
+             ? styles["btnHover"]
+             : ""
+         } ${styles["second-div"]}`}
       >
-        <button
+        <Button
           onClick={viewHandler}
-          disabled={props.view === "multiyears"}
-          className={styles["btn"]}
-        >
-          {props.view === "date" && <div>{Month[month]}</div>}
-          {props.view === "years" &&
-            (year % 10 !== 0 ? (
-              <div>
-                {year - (year % 10) + 1} - {year - (year % 10) + 10}
-              </div>
-            ) : (
-              <div>
-                {year - 9}-{year}
-              </div>
-            ))}
-
-          {(props.view === "date" || props.view === "months") && (
-            <div>{year}</div>
-          )}
-          {props.view === "multiyears" && (
-            <div>
-              {year - (year % 100) + 1} - {year - (year % 100) + 100}
-            </div>
-          )}
-        </button>
+          classes={styles["btn"]}
+          textContent={getYearData()}
+          disabled={
+            props.view === "multiyears" || props.selectedOption === "Year"
+          }
+        />
       </div>
-      <div className={styles["btnHover"]}>
-        <button
-          onClick={forwardMonthHandler}
-          type="button"
-          className={styles["btn"]}
-        >
-          {">"}
-        </button>
+
+      <div className={`${styles["third-div"]} ${styles["btnHover"]}`}>
+        <div className={styles["dropdown"]}>
+          <Dropdown view={props.view} option={list} setValue={selectedOption} />
+        </div>
+
+        {props.selectedOption !== "Year" && (
+          <Button
+            onClick={forwardMonthHandler}
+            classes={styles["btn"]}
+            textContent={">"}
+          />
+        )}
         {props.view !== "multiyears" && (
-          <button
+          <Button
             onClick={forwardYearHandler}
-            type="button"
-            className={styles["btn"]}
-          >
-            {">>"}
-          </button>
+            classes={styles["btn"]}
+            textContent={">>"}
+          />
         )}
       </div>
     </div>
