@@ -1,9 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
-import Daydate from "./components/Daydate/Daydate";
-import Header from "./components/Header/Header";
-import Card from "./components/Card/Card";
-import "./App.css";
-function App() {
+import Daydate from "../Daydate/Daydate";
+import Header from "../Header/Header";
+
+import Card from "../Card/Card";
+import styles from "./Calendar.module.css";
+const Calendar = () => {
   const todayDate = new Date();
   const [date, setDate] = useState({
     year: todayDate.getFullYear(),
@@ -74,7 +75,7 @@ function App() {
     };
     return (
       <Daydate
-        className="grid-item"
+        className={styles["grid-item"]}
         setValue={handleValue}
         date={dateObj}
         month={Month}
@@ -221,7 +222,7 @@ function App() {
       )}
 
       {selectedOption === "Year" && (
-        <div className="grid-container-year">
+        <div className={styles["grid-container-year"]}>
           {Array(12)
             .fill(0)
             .map((value, index) => renderElements(value, index))}
@@ -232,6 +233,6 @@ function App() {
       )}
     </Fragment>
   );
-}
+};
 
-export default App;
+export default Calendar;

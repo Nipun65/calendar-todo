@@ -1,17 +1,12 @@
 import "./Button.module.css";
 
-const Button = (props) => {
+const Button = ({ onClick, classes, disabled, textContent }) => {
   const clickHandler = () => {
-    props.onClick();
+    onClick();
   };
   return (
-    <button
-      onClick={clickHandler}
-      className={props.classes}
-      style={props.style}
-      disabled={props.disabled}
-    >
-      {props.textContent}
+    <button onClick={clickHandler} className={classes} disabled={disabled}>
+      {textContent}
     </button>
   );
 };
