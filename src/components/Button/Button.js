@@ -1,11 +1,13 @@
+import { handleFunc } from "../Handlers/Handlers";
 import "./Button.module.css";
 
 const Button = ({ onClick, classes, disabled, textContent }) => {
-  const clickHandler = () => {
-    onClick();
-  };
   return (
-    <button onClick={clickHandler} className={classes} disabled={disabled}>
+    <button
+      onClick={() => handleFunc(onClick)}
+      className={classes}
+      disabled={disabled}
+    >
       {textContent}
     </button>
   );

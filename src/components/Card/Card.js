@@ -1,14 +1,12 @@
 import styles from "./Card.module.css";
+import { handleFunc } from "../Handlers/Handlers";
 
 const Card = ({ data, setValue }) => {
-  const valueHandler = (event) => {
-    setValue(event.target.textContent);
-  };
   return (
     <div className={styles["viewgrid"]}>
       {data.map((dataValue) => (
         <div
-          onClick={valueHandler}
+          onClick={(event) => handleFunc(setValue, event.target.textContent)}
           className={styles["element"]}
           key={Math.random()}
         >
