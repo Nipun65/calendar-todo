@@ -1,0 +1,54 @@
+.header {
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  font-size: 23px;
+}
+
+.btnHover :hover {
+  background-color: #72a3a6;
+}
+
+ul {
+  background-color: white !important;
+  transition: none !important;
+}
+
+.dropdown {
+  float: left;
+}
+.first-div {
+  order: 1;
+  flex-basis: 25%;
+  text-align: left;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+.second-div {
+  order: 2;
+  flex-basis: 50%;
+  text-align: center;
+}
+.third-div {
+  order: 3;
+  flex-basis: 25%;
+  text-align: right;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
+.todaybtn {
+  padding-right: 10px;
+  background: transparent;
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  opacity: 1.8;
+}

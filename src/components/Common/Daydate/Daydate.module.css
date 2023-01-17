@@ -1,0 +1,113 @@
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  padding-bottom: 1.1em;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+.days-ele {
+  display: flex;
+  justify-content: center;
+}
+
+.array-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 85px;
+}
+.array-element :hover {
+  background-color: azure;
+}
+
+.array {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  height: 85px;
+}
+
+.array-year {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  height: 50px;
+}
+.array-element-year {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+}
+
+.month {
+  font-size: 1.2rem;
+  font-weight: 800;
+  /* padding: 20px 20px; */
+  font-style: italic;
+  border: none;
+  border-bottom: 1px dotted black;
+  margin: 20px;
+  padding: 10px;
+  /* text-decoration: dotted; */
+}
+
+.main-div {
+  height: fit-content;
+}
+
+.grid-item {
+  border: 1px solid black;
+  padding: 18px 18px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding-bottom: 1.1em;
+    font-size: 0.1rem;
+    font-weight: 50;
+    letter-spacing: 0.1rem;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  }
+  .days-ele {
+    display: flex;
+    justify-content: center;
+    padding: 4px 4px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding-bottom: 1.1em;
+    font-size: 0.1rem;
+    font-weight: 50;
+  }
+  .days-ele {
+    display: flex;
+    justify-content: center;
+    padding: 4px 4px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding-bottom: 1.1em;
+    font-size: 1.1rem;
+    font-weight: 200;
+  }
+}
