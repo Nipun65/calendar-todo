@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Dropdown.module.css";
-import Button from "../Button/Button";
+import Button from "../../UI/Button/Button";
 const Dropdown = ({ option, setValue }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Month");

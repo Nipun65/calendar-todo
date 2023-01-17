@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
-import Daydate from "../Daydate/Daydate";
-import Header from "../Header/Header";
+import Daydate from "../../Common/Daydate/Daydate";
+import Header from "../../Common/Header/Header";
 
-import Card from "../Card/Card";
+import Card from "../../Common/Card/Card";
 import styles from "./Calendar.module.css";
 const Calendar = () => {
   const todayDate = new Date();
