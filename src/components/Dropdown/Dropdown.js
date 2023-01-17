@@ -1,12 +1,14 @@
 import { useState } from "react";
 import styles from "./Dropdown.module.css";
 import Button from "../Button/Button";
-import { handleOptionClick } from "../Handlers/Handlers";
-
 const Dropdown = ({ option, setValue }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Month");
-
+  const handleOptionClick = (value) => {
+    setShowMenu(!showMenu);
+    setSelectedOption(value.target.textContent);
+    setValue(value.target.textContent);
+  };
   return (
     <div className={styles.dropdown}>
       <Button
@@ -18,18 +20,7 @@ const Dropdown = ({ option, setValue }) => {
       {showMenu ? (
         <ul className={styles["dropdown-menu"]}>
           {option.map((value) => (
-            <li
-              onClick={(value) =>
-                handleOptionClick(
-                  setShowMenu,
-                  setSelectedOption,
-                  showMenu,
-                  setValue,
-                  value
-                )
-              }
-              key={Math.random()}
-            >
+            <li onClick={handleOptionClick} key={Math.random()}>
               {value}
             </li>
           ))}

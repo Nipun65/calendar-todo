@@ -2,14 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
-import {
-  forwardMonthHandler,
-  backMonthHandler,
-  forwardYearHandler,
-  backYearHandler,
-  viewHandler,
-  handleFunc,
-} from "../Handlers/Handlers";
 
 const Header = ({
   date,
@@ -53,6 +45,72 @@ const Header = ({
     currentMonth: date.currentMonth,
     selectedDate: date.selectedDate,
   };
+  const selectedOptionHandler = (value) => {
+    setSelectedOption(value);
+  };
+
+  const backYearHandler = () => {
+    if (view === "months" || view === "years" || view === "multiyears") {
+      setValue("back");
+    }
+    setYear(--year);
+    dateObj.year = year;
+    setValue({ ...dateObj });
+  };
+  const forwardYearHandler = () => {
+    if (view === "months" || view === "years" || view === "multiyears") {
+      setValue("forward");
+    }
+    setYear(++year);
+    dateObj.year = year;
+    setValue({ ...dateObj });
+  };
+
+  const backMonthHandler = () => {
+    if (view === "months" || view === "years" || view === "multiyears") {
+      setValue("backmonth");
+    } else {
+      if (month === 0) {
+        setMonth(11);
+        setYear(--year);
+        dateObj.month = 11;
+        dateObj.year = year;
+      } else {
+        setMonth(--month);
+        dateObj.month = month;
+      }
+      setValue({ ...dateObj });
+    }
+  };
+
+  const forwardMonthHandler = () => {
+    if (view === "months" || view === "years" || view === "multiyears") {
+      setValue("forwardmonth");
+    } else {
+      if (month === 11) {
+        setMonth(0);
+        setYear(++year);
+        dateObj.month = 0;
+        dateObj.year = year;
+      } else {
+        setMonth(++month);
+        dateObj.month = month;
+      }
+      setValue({ ...dateObj });
+    }
+  };
+  const viewHandler = (viewValue) => {
+    if (view === "date") {
+      setView("months");
+    } else if (view === "months") {
+      setView("years");
+    } else if (view === "years") {
+      setView("multiyears");
+    }
+  };
+  const handleToday = (value) => {
+    setToday();
+  };
 
   const getYearData = () => {
     let textContent = "";
@@ -84,26 +142,14 @@ const Header = ({
       <div className={`${styles["btnHover"]} ${styles["first-div"]}`}>
         {view !== "multiyears" && (
           <Button
-            onClick={() =>
-              backYearHandler(view, setValue, setYear, year, dateObj)
-            }
+            onClick={backYearHandler}
             classes={styles["btn"]}
             textContent={"<<"}
           />
         )}
         {selectedOption !== "Year" && (
           <Button
-            onClick={() =>
-              backMonthHandler(
-                view,
-                setValue,
-                month,
-                setMonth,
-                setYear,
-                dateObj,
-                year
-              )
-            }
+            onClick={backMonthHandler}
             classes={styles["btn"]}
             disabled={date.year === 1}
             textContent={"<"}
@@ -111,7 +157,7 @@ const Header = ({
         )}
         <div className={styles["todaybtn-div"]}>
           <Button
-            onClick={() => handleFunc(setToday)}
+            onClick={handleToday}
             classes={styles["todaybtn"]}
             textContent={"Today"}
           />
@@ -126,7 +172,7 @@ const Header = ({
          } ${styles["second-div"]}`}
       >
         <Button
-          onClick={() => viewHandler(view, setView)}
+          onClick={viewHandler}
           classes={styles["btn"]}
           textContent={getYearData()}
           disabled={view === "multiyears" || selectedOption === "Year"}
@@ -138,32 +184,20 @@ const Header = ({
           <Dropdown
             view={view}
             option={list}
-            setValue={(value) => handleFunc(setSelectedOption, value)}
+            setValue={selectedOptionHandler}
           />
         </div>
 
         {selectedOption !== "Year" && (
           <Button
-            onClick={() =>
-              forwardMonthHandler(
-                view,
-                setValue,
-                month,
-                setMonth,
-                setYear,
-                year,
-                dateObj
-              )
-            }
+            onClick={forwardMonthHandler}
             classes={styles["btn"]}
             textContent={">"}
           />
         )}
         {view !== "multiyears" && (
           <Button
-            onClick={() =>
-              forwardYearHandler(view, setValue, setYear, year, dateObj)
-            }
+            onClick={forwardYearHandler}
             classes={styles["btn"]}
             textContent={">>"}
           />

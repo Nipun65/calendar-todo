@@ -1,5 +1,4 @@
 import styles from "./Daydate.module.css";
-import { dateHandler } from "../Handlers/Handlers";
 
 const Daydate = ({ date, setValue, selectedOption, month }) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -29,6 +28,14 @@ const Daydate = ({ date, setValue, selectedOption, month }) => {
   const startDayOfTheMonth = startDate.getDay();
   fillTheArray(startMonth, startDayOfTheMonth, endDateOfTheMonth);
 
+  const dateHandler = (event) => {
+    date.selectedDate = {
+      userYear: date.year,
+      userMonth: date.month,
+      userDate: +event.target.textContent,
+    };
+    setValue(date);
+  };
   return (
     <div
       className={`${styles["main-div"]} ${
@@ -63,7 +70,7 @@ const Daydate = ({ date, setValue, selectedOption, month }) => {
                         ? styles["array-element-year"]
                         : styles["array-element"]
                     }`}
-                    onClick={(event) => dateHandler(date, event, setValue)}
+                    onClick={dateHandler}
                     style={
                       date.month === date.currentMonth &&
                       date.date === dateValue &&
