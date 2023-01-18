@@ -108,4 +108,8 @@ function Daydate({ date, setValue, selectedOption, month }) {
     </div>
   );
 }
+
+Daydate.defaultProps = {
+  date: {},
+};
 export default Daydate;

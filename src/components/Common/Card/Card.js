@@ -22,4 +22,6 @@ function Card({ data, setValue }) {
     </div>
   );
 }
+
+Card.defaultProps = { data: [] };
 export default Card;

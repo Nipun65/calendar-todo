@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="btnHover first-div"
+  >
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      &lt;&lt;
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      &lt;
+    </button>
+    <div
+      className="todaybtn-div"
+    >
+      <button
+        className="todaybtn"
+        onClick={[Function]}
+        type="button"
+      >
+        Today
+      </button>
+    </div>
+  </div>
+  <div
+    className="
+         btnHover second-div"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
+  <div
+    className="third-div btnHover"
+  >
+    <div
+      className="dropdown"
+    >
+      <div
+        className="dropdown"
+      >
+        <button
+          className="titlebutton"
+          onClick={[Function]}
+          type="button"
+        >
+          Month
+        </button>
+      </div>
+    </div>
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      &gt;
+    </button>
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      &gt;&gt;
+    </button>
+  </div>
+</div>
+`;

@@ -21,3 +21,7 @@ You may also see any lint errors in the console.
 ### `npm run lint`
 
 Run for eslint.
+
+### `npm test`
+
+Run for test cases.
