@@ -1,14 +1,18 @@
-import { useState } from "react";
-import styles from "./Dropdown.module.css";
-import Button from "../../UI/Button/Button";
-const Dropdown = ({ option, setValue }) => {
+import { useState } from 'react';
+import styles from './Dropdown.module.css';
+import Button from '../../UI/Button/Button';
+
+function Dropdown({ option, setValue }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Month");
+  const [selectedOption, setSelectedOption] = useState('Month');
+
+  // handling selected option
   const handleOptionClick = (value) => {
     setShowMenu(!showMenu);
     setSelectedOption(value.target.textContent);
     setValue(value.target.textContent);
   };
+
   return (
     <div className={styles.dropdown}>
       <Button
@@ -18,9 +22,13 @@ const Dropdown = ({ option, setValue }) => {
       />
 
       {showMenu ? (
-        <ul className={styles["dropdown-menu"]}>
+        <ul className={styles['dropdown-menu']}>
           {option.map((value) => (
-            <li onClick={handleOptionClick} key={Math.random()}>
+            <li
+              role="presentation"
+              onClick={handleOptionClick}
+              key={Math.random()}
+            >
               {value}
             </li>
           ))}
@@ -28,5 +36,5 @@ const Dropdown = ({ option, setValue }) => {
       ) : null}
     </div>
   );
-};
+}
 export default Dropdown;
