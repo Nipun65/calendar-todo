@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -7,7 +7,7 @@
     "no-plusplus": 0,
     "react/prop-types": "off",
     "no-param-reassign": 0,
-    "max-len":"off"  
+    "max-len": "off"
   },
   "env": {
     "browser": true,

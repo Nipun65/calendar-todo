@@ -16,13 +16,10 @@ function Header({
   const [month, setMonth] = useState(date.month);
   let yearDuplicate = year;
   let monthDuplicate = month;
-  useEffect(
-    () => {
-      setMonth(date.month);
-      setYear(date.year);
-    },
-    [date.month, date.year],
-  );
+  useEffect(() => {
+    setMonth(date.month);
+    setYear(date.year);
+  }, [date.month, date.year]);
   const Month = [
     'January',
     'February',

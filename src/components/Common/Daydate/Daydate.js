@@ -1,8 +1,6 @@
 import styles from './Daydate.module.css';
 
-function Daydate({
-  date, setValue, selectedOption, month,
-}) {
+function Daydate({ date, setValue, selectedOption, month }) {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const startYear = date.year;
   const startMonth = date.month;
@@ -42,13 +40,17 @@ function Daydate({
 
   // style for setting today's date and user selected date
   const getStyle = (dateValue) => {
-    if (date.month === date.currentMonth
-      && date.date === dateValue
-      && date.currentYear === +date.year) {
+    if (
+      date.month === date.currentMonth &&
+      date.date === dateValue &&
+      date.currentYear === +date.year
+    ) {
       return { backgroundColor: '#81d5ea' };
     }
-    if (date.selectedDate?.userDate === dateValue
-          && date.month === date.selectedDate.userMonth) {
+    if (
+      date.selectedDate?.userDate === dateValue &&
+      date.month === date.selectedDate.userMonth
+    ) {
       return { backgroundColor: 'rgb(201,234,255)', opacity: 0.5 };
     }
 
@@ -97,10 +99,7 @@ function Daydate({
                 );
               }
               return (
-                <div
-                  key={Math.random()}
-                  className={styles['array-element']}
-                />
+                <div key={Math.random()} className={styles['array-element']} />
               );
             })}
           </div>
