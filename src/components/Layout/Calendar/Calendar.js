@@ -237,7 +237,10 @@ function Calendar() {
         </div>
       )}
       {view !== 'date' && (
-        <Card data={view === 'months' ? Month : years} setValue={handleMonthorYear} />
+        <Card
+          data={view === 'months' ? Month : years}
+          setValue={handleMonthorYear}
+        />
       )}
     </>
   );
