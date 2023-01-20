@@ -1,21 +1,24 @@
-import styles from "./Daydate.module.css";
+import styles from './Daydate.module.css';
 
-const Daydate = ({ date, setValue, selectedOption, month }) => {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function Daydate({
+  date, setValue, selectedOption, month,
+}) {
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const startYear = date.year;
   const startMonth = date.month;
 
-  let daywisedates = Array(6)
+  const daywisedates = Array(6)
     .fill()
     .map(() => Array(7).fill(0));
 
+  // filling the array according to startday and end date
   const fillTheArray = (i, startDay, end) => {
-    let date = 1;
+    let dateValue = 1;
     let week = 0;
-    while (date <= end) {
-      daywisedates[week][startDay % 7] = date;
+    while (dateValue <= end) {
+      daywisedates[week][startDay % 7] = dateValue;
       startDay++;
-      date++;
+      dateValue++;
       if (startDay % 7 === 0) {
         week++;
       }
@@ -36,18 +39,33 @@ const Daydate = ({ date, setValue, selectedOption, month }) => {
     };
     setValue(date);
   };
+
+  // style for setting today's date and user selected date
+  const getStyle = (dateValue) => {
+    if (date.month === date.currentMonth
+      && date.date === dateValue
+      && date.currentYear === +date.year) {
+      return { backgroundColor: '#81d5ea' };
+    }
+    if (date.selectedDate?.userDate === dateValue
+          && date.month === date.selectedDate.userMonth) {
+      return { backgroundColor: 'rgb(201,234,255)', opacity: 0.5 };
+    }
+
+    return {};
+  };
   return (
     <div
-      className={`${styles["main-div"]} ${
-        selectedOption === "Year" ? styles["grid-item"] : ""
+      className={`${styles['main-div']} ${
+        selectedOption === 'Year' ? styles['grid-item'] : ''
       }`}
     >
-      {selectedOption === "Year" && (
-        <div className={styles["month"]}>{month[date.month]}</div>
+      {selectedOption === 'Year' && (
+        <div className={styles.month}>{month[date.month]}</div>
       )}
-      <div className={styles["days"]}>
+      <div className={styles.days}>
         {days.map((value) => (
-          <div key={Math.random()} className={styles["days-ele"]}>
+          <div key={Math.random()} className={styles['days-ele']}>
             {value}
           </div>
         ))}
@@ -56,7 +74,7 @@ const Daydate = ({ date, setValue, selectedOption, month }) => {
         {daywisedates.map((value) => (
           <div
             className={`${
-              selectedOption === "Year" ? styles["array-year"] : styles["array"]
+              selectedOption === 'Year' ? styles['array-year'] : styles.array
             }`}
             key={Math.random()}
           >
@@ -64,40 +82,31 @@ const Daydate = ({ date, setValue, selectedOption, month }) => {
               if (dateValue) {
                 return (
                   <div
+                    role="presentation"
                     key={Math.random()}
                     className={`${
-                      selectedOption === "Year"
-                        ? styles["array-element-year"]
-                        : styles["array-element"]
+                      selectedOption === 'Year'
+                        ? styles['array-element-year']
+                        : styles['array-element']
                     }`}
                     onClick={dateHandler}
-                    style={
-                      date.month === date.currentMonth &&
-                      date.date === dateValue &&
-                      date.currentYear === +date.year
-                        ? { backgroundColor: "#81d5ea" }
-                        : date.selectedDate?.userDate === dateValue &&
-                          date.month === date.selectedDate.userMonth
-                        ? { backgroundColor: "rgb(201,234,255)", opacity: 0.5 }
-                        : {}
-                    }
+                    style={getStyle(dateValue)}
                   >
                     {dateValue}
                   </div>
                 );
-              } else {
-                return (
-                  <div
-                    key={Math.random()}
-                    className={styles["array-element"]}
-                  ></div>
-                );
               }
+              return (
+                <div
+                  key={Math.random()}
+                  className={styles['array-element']}
+                />
+              );
             })}
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 export default Daydate;

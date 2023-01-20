@@ -1,14 +1,16 @@
-import "./Button.module.css";
+import './Button.module.css';
 
-const Button = ({ onClick, classes, disabled, textContent }) => {
+function Button({
+  onClick, classes, disabled, textContent,
+}) {
   const clickHandler = () => {
     onClick();
   };
   return (
-    <button onClick={clickHandler} className={classes} disabled={disabled}>
+    <button onClick={clickHandler} className={classes} disabled={disabled} type="button">
       {textContent}
     </button>
   );
-};
+}
 
 export default Button;
