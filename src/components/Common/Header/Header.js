@@ -221,4 +221,7 @@ function Header({
     </div>
   );
 }
+Header.defaultProps = {
+  date: {},
+};
 export default Header;

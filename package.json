@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-plugin-jest": "^27.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "test": "react-scripts test",
     "lint": "eslint ."
   },
   "browserslist": {
@@ -19,11 +22,14 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "eslint": "^8.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.1"
+    "eslint-plugin-react": "^7.32.1",
+    "jest": "^27.5.1",
+    "jest-watch-typeahead": "^0.6.5"
   }
 }
