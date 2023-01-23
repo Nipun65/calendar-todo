@@ -1,10 +1,9 @@
 import styles from './Daydate.module.css';
 
-function Daydate({ date, setValue, selectedOption, month }) {
+function Daydate({ date, setValue, selectedOption, month, setView }) {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const startYear = date.year;
   const startMonth = date.month;
-
   const daywisedates = Array(6)
     .fill()
     .map(() => Array(7).fill(0));
@@ -36,6 +35,7 @@ function Daydate({ date, setValue, selectedOption, month }) {
       userDate: +event.target.textContent,
     };
     setValue(date);
+    setView('day');
   };
 
   // style for setting today's date and user selected date

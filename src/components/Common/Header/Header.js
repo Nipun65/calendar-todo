@@ -46,37 +46,73 @@ function Header({
   };
 
   const selectedOptionHandler = (value) => {
+    setView('months');
     setSelectedOption(value);
   };
 
   // handling the back year conditionally if it's in date view then update the date object here or in other view update values in parent component
   const backYearHandler = () => {
-    if (view === 'months' || view === 'years' || view === 'multiyears') {
+    if (
+      view === 'months' ||
+      view === 'years' ||
+      view === 'multiyears' ||
+      view === 'day'
+    ) {
       setValue('back');
     }
-    yearDuplicate = year;
-    setYear(--yearDuplicate);
-    dateObj.year = yearDuplicate;
-    setValue({ ...dateObj });
+
+    if (selectedOption === 'Year') {
+      yearDuplicate = year - 10;
+      setYear(yearDuplicate);
+      dateObj.year = yearDuplicate;
+      setValue({ ...dateObj });
+    } else {
+      yearDuplicate = year;
+      setYear(--yearDuplicate);
+      dateObj.year = yearDuplicate;
+      setValue({ ...dateObj });
+    }
   };
 
   // handling the forward year conditionally if it's in date view then update the date object here or in other view update values in parent component
   const forwardYearHandler = () => {
-    if (view === 'months' || view === 'years' || view === 'multiyears') {
+    if (
+      view === 'months' ||
+      view === 'years' ||
+      view === 'multiyears' ||
+      view === 'day'
+    ) {
       setValue('forward');
     }
-    yearDuplicate = year;
-    setYear(++yearDuplicate);
-    dateObj.year = yearDuplicate;
-    setValue({ ...dateObj });
+    if (selectedOption === 'Year') {
+      yearDuplicate = year + 10;
+      setYear(yearDuplicate);
+      dateObj.year = yearDuplicate;
+      setValue({ ...dateObj });
+    } else {
+      yearDuplicate = year;
+      setYear(++yearDuplicate);
+      dateObj.year = yearDuplicate;
+      setValue({ ...dateObj });
+    }
   };
 
   // handling the back month conditionally if it's in date view then update the date object here or in other view update values in parent component
   const backMonthHandler = () => {
-    if (view === 'months' || view === 'years' || view === 'multiyears') {
+    if (
+      view === 'months' ||
+      view === 'years' ||
+      view === 'multiyears' ||
+      view === 'day'
+    ) {
       setValue('backmonth');
     } else {
-      if (month === 0) {
+      if (selectedOption === 'Year') {
+        yearDuplicate = year;
+        setYear(--yearDuplicate);
+        dateObj.year = yearDuplicate;
+        setValue({ ...dateObj });
+      } else if (month === 0) {
         setMonth(11);
         yearDuplicate = year;
         setYear(--yearDuplicate);
@@ -93,10 +129,20 @@ function Header({
 
   // handling the forward month conditionally if it's in date view then update the date object here or in other view update values in parent component
   const forwardMonthHandler = () => {
-    if (view === 'months' || view === 'years' || view === 'multiyears') {
+    if (
+      view === 'months' ||
+      view === 'years' ||
+      view === 'multiyears' ||
+      view === 'day'
+    ) {
       setValue('forwardmonth');
     } else {
-      if (month === 11) {
+      if (selectedOption === 'Year') {
+        yearDuplicate = year;
+        setYear(++yearDuplicate);
+        dateObj.year = yearDuplicate;
+        setValue({ ...dateObj });
+      } else if (month === 11) {
         setMonth(0);
         yearDuplicate = year;
         setYear(++yearDuplicate);
@@ -113,8 +159,14 @@ function Header({
 
   // setting the view
   const viewHandler = () => {
-    if (view === 'date') {
-      setView('months');
+    if (view === 'day') {
+      setView('date');
+    } else if (view === 'date') {
+      if (selectedOption === 'Year') {
+        setView('years');
+      } else {
+        setView('months');
+      }
     } else if (view === 'months') {
       setView('years');
     } else if (view === 'years') {
@@ -129,6 +181,13 @@ function Header({
 
   const getYearData = () => {
     let textContent = '';
+
+    if (view === 'day') {
+      textContent += `${date.selectedDate.userDate} ${
+        Month[date.selectedDate.userMonth]
+      } ${date.selectedDate.userYear}`;
+    }
+
     if (view === 'date' && selectedOption !== 'Year') {
       textContent += `${Month[month]} `;
     }
@@ -162,14 +221,14 @@ function Header({
             textContent="<<"
           />
         )}
-        {selectedOption !== 'Year' && (
-          <Button
-            onClick={backMonthHandler}
-            classes={styles.btn}
-            disabled={date.year === 1}
-            textContent="<"
-          />
-        )}
+
+        <Button
+          onClick={backMonthHandler}
+          classes={styles.btn}
+          disabled={date.year === 1}
+          textContent="<"
+        />
+
         <div className={styles['todaybtn-div']}>
           <Button
             onClick={handleToday}
@@ -190,7 +249,7 @@ function Header({
           onClick={viewHandler}
           classes={styles.btn}
           textContent={getYearData()}
-          disabled={view === 'multiyears' || selectedOption === 'Year'}
+          disabled={view === 'multiyears'}
         />
       </div>
 
@@ -203,13 +262,12 @@ function Header({
           />
         </div>
 
-        {selectedOption !== 'Year' && (
-          <Button
-            onClick={forwardMonthHandler}
-            classes={styles.btn}
-            textContent=">"
-          />
-        )}
+        <Button
+          onClick={forwardMonthHandler}
+          classes={styles.btn}
+          textContent=">"
+        />
+
         {view !== 'multiyears' && (
           <Button
             onClick={forwardYearHandler}

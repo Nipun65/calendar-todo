@@ -1,0 +1,23 @@
+.linethrough {
+  text-decoration: line-through;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.background-color {
+  background-color: lightgray;
+  width: 50%;
+  margin: 20px auto;
+  word-break: break-all;
+}
+
+.editbutton {
+  margin: -8px 15px 0px 0px;
+}
+
+.required {
+  float: left;
+}
