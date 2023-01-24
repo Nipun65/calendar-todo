@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../../UI/Button/Button';
 import Checkbox from '../../UI/Checkbox/Chekbox';
 import DialogBox from '../../UI/Modal/Modal';
@@ -18,6 +18,10 @@ function Todo({ date, Month }) {
   const todayDate = `${date.selectedDate.userDate}-${
     Month[date.selectedDate.userMonth]
   }-${date.selectedDate.userYear}`;
+
+  useEffect(() => {
+    setValid(true);
+  }, [date]);
 
   const handleChange = () => {
     if (document.getElementById('todoText').value.length) {
@@ -125,7 +129,6 @@ function Todo({ date, Month }) {
               {dataValue.task}
             </li>
 
-            {/* <div className="mb-6"> */}
             <Button
               onClick={() => handleUpdate(index)}
               classes={`button is-primary is-pulled-right ml-4 ${styles.editbutton}`}
@@ -135,7 +138,6 @@ function Todo({ date, Month }) {
               onClick={() => handleDelete(index)}
               classes="delete is-pulled-right button is-danger"
             />
-            {/* </div> */}
           </div>
         ))}
 

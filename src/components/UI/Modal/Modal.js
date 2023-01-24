@@ -6,6 +6,7 @@ import styles from './Modal.module.css';
 
 function DialogBox({ open, setModal, editValue, currentValue, title }) {
   const [inputValue, setInputValue] = useState(currentValue);
+
   const handleClose = () => {
     open = false;
     setModal(false);

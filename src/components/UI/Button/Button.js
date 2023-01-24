@@ -4,6 +4,7 @@ function Button({ onClick, classes, disabled, textContent }) {
   const clickHandler = () => {
     onClick();
   };
+
   return (
     <button
       onClick={clickHandler}

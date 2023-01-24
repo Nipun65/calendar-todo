@@ -4,6 +4,7 @@ function Checkbox({ onClick, classes, checked }) {
   const handleClick = () => {
     onClick();
   };
+
   return (
     <input
       type="checkbox"

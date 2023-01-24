@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import Dropdown from '../Dropdown/Dropdown';
 import Button from '../../UI/Button/Button';
+import { MONTHS, DROPDOWNLIST } from '../../../utils/Constants.utils';
 
 function Header({
   date,
@@ -14,28 +15,9 @@ function Header({
 }) {
   const [year, setYear] = useState(date.year);
   const [month, setMonth] = useState(date.month);
+
   let yearDuplicate = year;
   let monthDuplicate = month;
-  useEffect(() => {
-    setMonth(date.month);
-    setYear(date.year);
-  }, [date.month, date.year]);
-  const Month = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const dropdownlList = ['Month', 'Year'];
-
   const dateObj = {
     year,
     month,
@@ -44,6 +26,11 @@ function Header({
     currentMonth: date.currentMonth,
     selectedDate: date.selectedDate,
   };
+
+  useEffect(() => {
+    setMonth(date.month);
+    setYear(date.year);
+  }, [date.month, date.year]);
 
   const selectedOptionHandler = (value) => {
     setView('months');
@@ -58,7 +45,7 @@ function Header({
       view === 'multiyears' ||
       view === 'day'
     ) {
-      setValue('back');
+      setValue('doublebackward');
     }
 
     if (selectedOption === 'Year') {
@@ -82,7 +69,7 @@ function Header({
       view === 'multiyears' ||
       view === 'day'
     ) {
-      setValue('forward');
+      setValue('doubleforward');
     }
     if (selectedOption === 'Year') {
       yearDuplicate = year + 10;
@@ -105,7 +92,7 @@ function Header({
       view === 'multiyears' ||
       view === 'day'
     ) {
-      setValue('backmonth');
+      setValue('singlebackward');
     } else {
       if (selectedOption === 'Year') {
         yearDuplicate = year;
@@ -135,7 +122,7 @@ function Header({
       view === 'multiyears' ||
       view === 'day'
     ) {
-      setValue('forwardmonth');
+      setValue('singleforward');
     } else {
       if (selectedOption === 'Year') {
         yearDuplicate = year;
@@ -174,7 +161,7 @@ function Header({
     }
   };
 
-  // to get today's date
+  // to set today's date
   const handleToday = () => {
     setToday();
   };
@@ -184,12 +171,12 @@ function Header({
 
     if (view === 'day') {
       textContent += `${date.selectedDate.userDate} ${
-        Month[date.selectedDate.userMonth]
+        MONTHS[date.selectedDate.userMonth]
       } ${date.selectedDate.userYear}`;
     }
 
     if (view === 'date' && selectedOption !== 'Year') {
-      textContent += `${Month[month]} `;
+      textContent += `${MONTHS[month]} `;
     }
     if (view === 'years') {
       if (year % 10 !== 0) {
@@ -239,11 +226,9 @@ function Header({
       </div>
       <div
         className={`
-         ${
-           view !== 'multiyears' && selectedOption !== 'Year'
-             ? styles.btnHover
-             : ''
-         } ${styles['second-div']}`}
+         ${view !== 'multiyears' ? styles.btnHover : ''} ${
+          styles['second-div']
+        }`}
       >
         <Button
           onClick={viewHandler}
@@ -257,7 +242,7 @@ function Header({
         <div className={styles.dropdown}>
           <Dropdown
             view={view}
-            option={dropdownlList}
+            option={DROPDOWNLIST}
             setValue={selectedOptionHandler}
           />
         </div>

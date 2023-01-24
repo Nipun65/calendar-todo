@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Daydate from '../../Common/Daydate/Daydate';
 import Header from '../../Common/Header/Header';
 import Card from '../../Common/Card/Card';
 import styles from './Calendar.module.css';
 import Todo from '../../Common/Todo/Todo';
+import { MONTHS } from '../../../utils/Constants.utils';
 
 function Calendar() {
   const todayDate = new Date();
@@ -19,46 +21,11 @@ function Calendar() {
       userDate: 0,
     },
   });
-
-  const Month = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
   const [years, setYears] = useState();
-
-  // set the years array when first time component render
-  useEffect(() => {
-    const yearsArray = [];
-    let Currentyear = date.year;
-    let CurrentyearCopy = date.year - (date.year % 10) + 1;
-    while (CurrentyearCopy < Currentyear) {
-      yearsArray.push(CurrentyearCopy);
-      CurrentyearCopy++;
-    }
-    while (Currentyear % 10 !== 0) {
-      yearsArray.push(Currentyear);
-      Currentyear++;
-      if (Currentyear % 10 === 0) {
-        yearsArray.push(Currentyear);
-        setYears(yearsArray);
-      }
-    }
-  }, []);
-
   const [selectedOption, setSelectedOption] = useState('Month');
-
   const [view, setView] = useState('date');
+  const history = useNavigate();
+  const location = useLocation();
 
   // updating the view and years array
   const handleView = (value) => {
@@ -93,14 +60,166 @@ function Calendar() {
     }
   };
 
+  // validate user entered url and set date according to it
+  const validateUrl = (locationObj) => {
+    const pathnamePart = locationObj.pathname.split('/');
+    if (pathnamePart.length === 2) {
+      if (locationObj.search === '') {
+        if (pathnamePart[1] === 'month' || pathnamePart[1] === 'year') {
+          let newView = '';
+          if (pathnamePart[1] === 'month') {
+            newView = 'date';
+          } else if (pathnamePart[1] === 'year') {
+            newView = 'months';
+          }
+          setView(newView);
+        } else if (pathnamePart[1] === 'todo') {
+          setView('day');
+          date.selectedDate.userDate = todayDate.getDate();
+          date.selectedDate.userMonth = todayDate.getMonth();
+          date.selectedDate.userYear = todayDate.getFullYear();
+        }
+      } else if (locationObj.search.length) {
+        const secondpart = locationObj.search.split('?');
+        const secondpartdivide = secondpart[1].split('=');
+        const splitMonthYear = secondpartdivide[1].split('+');
+        if (secondpartdivide[0] === pathnamePart[1]) {
+          if (pathnamePart[1] === 'month') {
+            if (
+              splitMonthYear.length === 2 &&
+              +splitMonthYear[0] > 0 &&
+              +splitMonthYear[0] <= 12 &&
+              +splitMonthYear[1] > 0
+            ) {
+              date.month = +splitMonthYear[0] - 1;
+              date.year = +splitMonthYear[1];
+            }
+          } else if (pathnamePart[1] === 'year') {
+            if (splitMonthYear.length === 1 && +splitMonthYear[0] > 0) {
+              date.year = +splitMonthYear[0];
+              if (selectedOption === 'Month') {
+                setView('months');
+              }
+            }
+          } else if (pathnamePart[1] === 'multiyear') {
+            const splitsplitMonthYear = splitMonthYear[0].split('-');
+            const startYear = +splitsplitMonthYear[0].split('(')[1];
+            const endYear = +splitsplitMonthYear[1].split(')')[0];
+            if (endYear - startYear === 9) {
+              date.year = startYear;
+              setView('years');
+            } else if (endYear - startYear === 99) {
+              date.year = startYear;
+              handleView('multiyears');
+            }
+          }
+        } else if (
+          pathnamePart[1] === 'todo' &&
+          secondpartdivide[0] === 'day'
+        ) {
+          if (
+            splitMonthYear.length === 3 &&
+            +splitMonthYear[1] > 0 &&
+            +splitMonthYear[1] <= 12
+          ) {
+            const endDayOfTheMonth = new Date(
+              +splitMonthYear[2],
+              +splitMonthYear[1],
+              0
+            );
+            if (
+              +splitMonthYear[0] >= 1 &&
+              splitMonthYear[0] <= endDayOfTheMonth.getDate()
+            ) {
+              date.selectedDate.userDate = +splitMonthYear[0];
+              date.month = +splitMonthYear[1] - 1;
+              date.year = +splitMonthYear[2];
+              date.selectedDate.userMonth = +splitMonthYear[1] - 1;
+              date.selectedDate.userYear = +splitMonthYear[2];
+              setView('day');
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // set the years array when first time component render
+  useEffect(() => {
+    const yearsArray = [];
+    let Currentyear = date.year;
+    let CurrentyearCopy = date.year - (date.year % 10) + 1;
+    while (CurrentyearCopy < Currentyear) {
+      yearsArray.push(CurrentyearCopy);
+      CurrentyearCopy++;
+    }
+    while (Currentyear % 10 !== 0) {
+      yearsArray.push(Currentyear);
+      Currentyear++;
+      if (Currentyear % 10 === 0) {
+        yearsArray.push(Currentyear);
+        setYears(yearsArray);
+      }
+    }
+    validateUrl(location);
+  }, []);
+
+  // handle navigation as per view
+  useEffect(() => {
+    let navigateTo = '';
+    if (view === 'date') {
+      if (
+        date.month === todayDate.getMonth() &&
+        date.year === todayDate.getFullYear()
+      ) {
+        if (selectedOption === 'Month') {
+          navigateTo = '/month';
+        } else {
+          navigateTo = '/year';
+        }
+      } else if (selectedOption === 'Year') {
+        navigateTo = `/year?year=${date.year}`;
+      } else {
+        navigateTo = `/month?month=${date.month + 1}+${date.year}`;
+      }
+    }
+    if (view === 'months') {
+      if (date.year === todayDate.getFullYear()) {
+        navigateTo = '/year';
+      } else {
+        navigateTo = `/year?year=${date.year}`;
+      }
+    }
+    if (view === 'years') {
+      navigateTo = `/multiyear?multiyear=(${date.year - (date.year % 10) + 1}-${
+        date.year - (date.year % 10) + 10
+      })`;
+    }
+    if (view === 'multiyears') {
+      navigateTo = `/multiyear?multiyear=(${
+        date.year - (date.year % 100) + 1
+      }-${date.year - (date.year % 100) + 100})`;
+    }
+    if (view === 'day') {
+      if (date.selectedDate.userDate === todayDate.getDate()) {
+        navigateTo = '/todo';
+      } else {
+        navigateTo = `/todo?day=${date.selectedDate.userDate}+${
+          date.month + 1
+        }+${date.year}`;
+      }
+    }
+    history(navigateTo);
+  }, [view, date.month, date.year, date.selectedDate.userDate, selectedOption]);
+
   // updating the years array according to clicked event and view
   const handleValue = (value) => {
     date.year = +date.year;
     if (view === 'multiyears') {
       let startYear = '';
-      if (value === 'forwardmonth') {
+      if (value === 'singleforward') {
         startYear = date.year - (date.year % 100) + 100;
-      } else if (value === 'backmonth') {
+      } else if (value === 'singlebackward') {
         startYear = date.year - (date.year % 100) - 100;
       }
 
@@ -116,13 +235,13 @@ function Calendar() {
       setYears([...years]);
     } else if (view === 'years') {
       for (let i = 0; i < years.length; i++) {
-        if (value === 'forward') {
+        if (value === 'doubleforward') {
           years[i] += 100;
-        } else if (value === 'back') {
+        } else if (value === 'doublebackward') {
           years[i] -= 100;
-        } else if (value === 'forwardmonth') {
+        } else if (value === 'singleforward') {
           years[i] += 10;
-        } else if (value === 'backmonth') {
+        } else if (value === 'singlebackward') {
           years[i] -= 10;
         }
       }
@@ -130,32 +249,32 @@ function Calendar() {
       date.year = firstYear;
       setDate({ ...date });
     } else if (view === 'months') {
-      if (value === 'forward') {
+      if (value === 'doubleforward') {
         date.year += 10;
-      } else if (value === 'back') {
+      } else if (value === 'doublebackward') {
         date.year -= 10;
-      } else if (value === 'forwardmonth') {
+      } else if (value === 'singleforward') {
         date.year += 1;
-      } else if (value === 'backmonth') {
+      } else if (value === 'singlebackward') {
         date.year -= 1;
       }
       setDate({ ...date });
     } else if (view === 'day') {
-      if (value === 'forward') {
+      if (value === 'doubleforward') {
         if (date.selectedDate.userMonth === 11) {
           date.selectedDate.userMonth = 0;
           date.selectedDate.userYear += 1;
         } else {
           date.selectedDate.userMonth += 1;
         }
-      } else if (value === 'back') {
+      } else if (value === 'doublebackward') {
         if (date.selectedDate.userMonth === 0) {
           date.selectedDate.userMonth = 11;
           date.selectedDate.userYear -= 1;
         } else {
           date.selectedDate.userMonth -= 1;
         }
-      } else if (value === 'forwardmonth') {
+      } else if (value === 'singleforward') {
         const lastDay = new Date(
           date.selectedDate.userYear,
           date.selectedDate.userMonth + 1,
@@ -173,7 +292,7 @@ function Calendar() {
         } else {
           date.selectedDate.userDate += 1;
         }
-      } else if (value === 'backmonth') {
+      } else if (value === 'singlebackward') {
         if (date.selectedDate.userDate === 1) {
           if (date.month === 0) {
             const lastDay = new Date(
@@ -208,7 +327,7 @@ function Calendar() {
 
   // handle selected month or year in card
   const handleMonthorYear = (value) => {
-    const monthIndex = Month.findIndex((ele) => ele === value);
+    const monthIndex = MONTHS.findIndex((ele) => ele === value);
     if (monthIndex !== -1) {
       date.month = monthIndex;
       setDate({ ...date });
@@ -275,13 +394,14 @@ function Calendar() {
         className={styles['grid-item']}
         setValue={handleValue}
         date={dateObj}
-        month={Month}
+        month={MONTHS}
         selectedOption={selectedOption}
         key={Math.random()}
         setView={handleView}
       />
     );
   };
+
   return (
     <>
       <Header
@@ -312,11 +432,11 @@ function Calendar() {
       )}
       {view !== 'date' && view !== 'day' && (
         <Card
-          data={view === 'months' ? Month : years}
+          data={view === 'months' ? MONTHS : years}
           setValue={handleMonthorYear}
         />
       )}
-      {view === 'day' && <Todo date={date} Month={Month} />}
+      {view === 'day' && <Todo date={date} Month={MONTHS} />}
     </>
   );
 }
