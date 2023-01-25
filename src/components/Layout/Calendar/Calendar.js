@@ -105,10 +105,10 @@ function Calendar() {
             const splitsplitMonthYear = splitMonthYear[0].split('-');
             const startYear = +splitsplitMonthYear[0].split('(')[1];
             const endYear = +splitsplitMonthYear[1].split(')')[0];
-            if (endYear - startYear === 9) {
+            if (endYear - startYear === 9 && startYear % 10 === 1) {
               date.year = startYear;
               setView('years');
-            } else if (endYear - startYear === 99) {
+            } else if (endYear - startYear === 99 && startYear % 100 === 1) {
               date.year = startYear;
               handleView('multiyears');
             }
@@ -201,7 +201,11 @@ function Calendar() {
       }-${date.year - (date.year % 100) + 100})`;
     }
     if (view === 'day') {
-      if (date.selectedDate.userDate === todayDate.getDate()) {
+      if (
+        date.selectedDate.userDate === todayDate.getDate() &&
+        date.selectedDate.userMonth === todayDate.getMonth() &&
+        date.selectedDate.userYear === todayDate.getFullYear()
+      ) {
         navigateTo = '/todo';
       } else {
         navigateTo = `/todo?day=${date.selectedDate.userDate}+${
