@@ -48,13 +48,11 @@
 .month {
   font-size: 1.2rem;
   font-weight: 800;
-  /* padding: 20px 20px; */
   font-style: italic;
   border: none;
   border-bottom: 1px dotted black;
   margin: 20px;
   padding: 10px;
-  /* text-decoration: dotted; */
 }
 
 .main-div {
@@ -67,21 +65,13 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
   .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
     padding-bottom: 1.1em;
-    font-size: 0.1rem;
-    font-weight: 50;
-    letter-spacing: 0.1rem;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-  }
-  .days-ele {
-    display: flex;
-    justify-content: center;
-    padding: 4px 4px;
+    font-size: 1.1rem;
   }
 }
 
@@ -91,23 +81,16 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
     padding-bottom: 1.1em;
-    font-size: 0.1rem;
-    font-weight: 50;
-  }
-  .days-ele {
-    display: flex;
-    justify-content: center;
-    padding: 4px 4px;
+    font-size: 1rem;
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 600px) {
   .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
     padding-bottom: 1.1em;
-    font-size: 1.1rem;
-    font-weight: 200;
+    font-size: 0.9rem;
   }
 }

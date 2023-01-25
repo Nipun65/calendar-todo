@@ -10,14 +10,60 @@
 .background-color {
   background-color: lightgray;
   width: 50%;
-  margin: 20px auto;
-  word-break: break-all;
 }
 
 .editbutton {
-  margin: -8px 15px 0px 0px;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+
+.liele {
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  width: 80%;
+  display: inline-flex !important;
 }
 
 .required {
   float: left;
+}
+
+.main-div {
+  display: grid;
+  place-items: center;
+}
+
+.addtodobtn {
+  width: 120px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .addtodobtn {
+    width: 120px;
+  }
+  .editbutton {
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .addtodobtn {
+    width: 100px;
+  }
+  .editbutton {
+    width: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .addtodobtn {
+    width: 80px;
+  }
+  .editbutton {
+    width: 1px;
+  }
+}
+.todocontent {
+  display: inline-flex !important;
 }

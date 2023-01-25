@@ -219,7 +219,7 @@ function Header({
         <div className={styles['todaybtn-div']}>
           <Button
             onClick={handleToday}
-            classes={styles.todaybtn}
+            classes={`${styles.todaybtn} button is-small is-success`}
             textContent="Today"
           />
         </div>
@@ -232,7 +232,7 @@ function Header({
       >
         <Button
           onClick={viewHandler}
-          classes={styles.btn}
+          classes={`${styles.btn} is-size-6-mobile is-size-5-tablet is-size-4-desktop`}
           textContent={getYearData()}
           disabled={view === 'multiyears'}
         />

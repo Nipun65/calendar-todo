@@ -77,7 +77,7 @@ function Todo({ date, Month }) {
 
   return (
     <>
-      <div className="has-text-centered p-3 is-size-2 has-text-weight-bold">
+      <div className="has-text-centered pt-4 is-size-4-mobile is-size-3-tablet is-size-2-desktop has-text-weight-bold">
         To-do List
       </div>
       <div className="has-text-centered p-6">
@@ -103,44 +103,50 @@ function Todo({ date, Month }) {
         )}
         <div className="pt-6">
           <Button
-            classes="button is-success is-medium"
+            classes={`button is-success ${styles.addtodobtn}`}
             onClick={addTodo}
             textContent="Add Todo"
           />
         </div>
       </div>
-      {todoObj[todayDate] &&
-        todoObj[todayDate].map((dataValue, index) => (
-          <div
-            key={Math.random()}
-            className={`p-3 is-multiline px-6 ${styles['background-color']}`}
-          >
-            <Checkbox
-              onClick={() => handleComplete(index)}
-              classes="is-inline"
-              checked={dataValue.isCompleted}
-            />
-            <li
-              className="is-inline p-3"
-              style={
-                dataValue.isCompleted ? { textDecoration: 'line-through' } : {}
-              }
+      <div className={styles['main-div']}>
+        {todoObj[todayDate] &&
+          todoObj[todayDate].map((dataValue, index) => (
+            <div
+              key={Math.random()}
+              className={`p-4 m-2 ${styles['background-color']}`}
             >
-              {dataValue.task}
-            </li>
+              <Checkbox
+                onClick={() => handleComplete(index)}
+                classes="is-inline"
+                checked={dataValue.isCompleted}
+              />
 
-            <Button
-              onClick={() => handleUpdate(index)}
-              classes={`button is-primary is-pulled-right ml-4 ${styles.editbutton}`}
-              textContent="Edit"
-            />
-            <Button
-              onClick={() => handleDelete(index)}
-              classes="delete is-pulled-right button is-danger"
-            />
-          </div>
-        ))}
+              <li
+                className={`p-3 ${styles.todocontent} ${styles.liele}`}
+                style={
+                  dataValue.isCompleted
+                    ? { textDecoration: 'line-through' }
+                    : {}
+                }
+              >
+                {dataValue.task}
+              </li>
 
+              <div className="is-pulled-right">
+                <Button
+                  onClick={() => handleUpdate(index)}
+                  classes={`button is-primary ${styles.editbutton}`}
+                  textContent="Edit"
+                />
+                <Button
+                  onClick={() => handleDelete(index)}
+                  classes="delete button is-danger"
+                />
+              </div>
+            </div>
+          ))}
+      </div>
       {openModal && (
         <DialogBox
           open={openModal}

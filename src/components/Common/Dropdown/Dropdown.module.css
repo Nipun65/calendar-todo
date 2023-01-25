@@ -22,12 +22,7 @@ li:hover {
 }
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  width: 162px;
 }
 
 .dropdown-menu li {
@@ -43,13 +38,36 @@ li:hover {
 }
 
 .titlebutton {
-  background: transparent;
-  color: "white";
-  border-radius: "4px";
   width: 162px;
-  background-color: #a7d3782e;
   color: black;
   padding: 12px;
   font-size: 16px;
   opacity: 1.8;
+}
+
+@media only screen and (max-width: 1200px) {
+  .titlebutton {
+    width: 122px;
+  }
+  .dropdown-menu {
+    width: 122px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .titlebutton {
+    width: 92px;
+  }
+  .dropdown-menu {
+    width: 92px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .titlebutton {
+    width: 72px;
+  }
+  .dropdown-menu {
+    width: 72px;
+  }
 }
