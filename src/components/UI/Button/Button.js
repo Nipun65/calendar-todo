@@ -1,5 +1,3 @@
-import './Button.module.css';
-
 function Button({ onClick, classes, disabled, textContent }) {
   const clickHandler = () => {
     onClick();
@@ -8,7 +6,7 @@ function Button({ onClick, classes, disabled, textContent }) {
   return (
     <button
       onClick={clickHandler}
-      className={classes}
+      className={`${classes} is-clickable`}
       disabled={disabled}
       type="button"
     >

@@ -48,150 +48,150 @@ exports[`should match the snapshot 1`] = `
       className="array"
     >
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
-      />
-    </div>
-    <div
-      className="array"
-    >
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
+        className="array-element "
       />
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
-      />
-    </div>
-    <div
-      className="array"
-    >
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
-      />
-      <div
-        className="array-element"
+        className="array-element "
       />
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
       />
       <div
-        className="array-element"
+        className="array-element "
+      />
+    </div>
+    <div
+      className="array"
+    >
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+    </div>
+    <div
+      className="array"
+    >
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
+      />
+      <div
+        className="array-element "
       />
     </div>
   </div>

@@ -1,5 +1,3 @@
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
 import { useState } from 'react';
 import Button from '../Button/Button';
 import styles from './Modal.module.css';
@@ -20,29 +18,40 @@ function DialogBox({ open, setModal, editValue, currentValue, title }) {
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      center
-      classNames={{
-        modal: styles.Modal,
-      }}
-    >
-      <h1 className="py-4 px-1 has-text-weight-bold">{title}</h1>
-      <input
-        id="todoTextModal"
-        className="input is-small p-4"
-        placeholder="Update Value"
-        onChange={changeHandler}
-        value={inputValue}
-      />
-      <Button
-        textContent="Update"
-        classes="is-primary button m-2 is-pulled-right"
-        onClick={handleUpdate}
-        disabled={!inputValue.length}
-      />
-    </Modal>
+    <>
+      {open && (
+        <div className="modal is-active">
+          <div className="modal-background" />
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <p className="modal-card-title">{title}</p>
+              <Button
+                classes="delete button is-danger"
+                onClick={() => handleClose(false)}
+              />
+            </header>
+            <section className="modal-card-body">
+              <input
+                id="todoTextModal"
+                className="input is-small p-4"
+                placeholder="Update Value"
+                onChange={changeHandler}
+                value={inputValue}
+              />
+            </section>
+            <footer className={`${styles['modal-card-footer']}`}>
+              <Button
+                textContent="Update"
+                classes="button is-primary is-pulled-right"
+                onClick={handleUpdate}
+                disabled={!inputValue.length}
+              />
+            </footer>
+          </div>
+        </div>
+      )}
+      <div />
+    </>
   );
 }
 export default DialogBox;

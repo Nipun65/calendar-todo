@@ -14,11 +14,18 @@ function Dropdown({ option, setValue }) {
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div>
       <Button
         onClick={() => setShowMenu(!showMenu)}
-        classes={`${styles.titlebutton} button is-primary`}
-        textContent={selectedOption}
+        classes="button is-primary"
+        textContent={
+          <div className={`${styles.textContent}`}>
+            <span>{selectedOption}</span>
+            <span className="icon is-small">
+              <i className="fas fa-angle-down" aria-hidden="true" />
+            </span>
+          </div>
+        }
       />
 
       {showMenu ? (
@@ -28,6 +35,7 @@ function Dropdown({ option, setValue }) {
               role="presentation"
               onClick={handleOptionClick}
               key={Math.random()}
+              className={`has-text-centered ${styles.dropdownli} is-clickable`}
             >
               {value}
             </li>

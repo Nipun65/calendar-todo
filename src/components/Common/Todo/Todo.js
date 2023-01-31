@@ -81,10 +81,10 @@ function Todo({ date, Month }) {
         To-do List
       </div>
       <div className="has-text-centered p-6">
-        <div className="control">
+        <div className={`control is-centered container ${styles.inputdiv}`}>
           <input
             id="todoText"
-            className="input is-normal container is-centered"
+            className="input"
             type="text"
             placeholder="Enter Todo"
             onFocus={() => {
@@ -92,15 +92,13 @@ function Todo({ date, Month }) {
             }}
             onChange={handleChange}
           />
+          {!isValid && touched && (
+            <p className="help is-danger has-text-weight-bold is-pulled-left px-1">
+              This field is required
+            </p>
+          )}
         </div>
 
-        {!isValid && touched && (
-          <p
-            className={`help is-danger has-text-weight-bold ${styles.required} mb-3 px-1`}
-          >
-            This field is required
-          </p>
-        )}
         <div className="pt-6">
           <Button
             classes={`button is-success ${styles.addtodobtn}`}
@@ -114,7 +112,7 @@ function Todo({ date, Month }) {
           todoObj[todayDate].map((dataValue, index) => (
             <div
               key={Math.random()}
-              className={`p-4 m-2 ${styles['background-color']}`}
+              className={`p-4 m-2 ${styles['todo-div']}`}
             >
               <Checkbox
                 onClick={() => handleComplete(index)}
@@ -123,7 +121,7 @@ function Todo({ date, Month }) {
               />
 
               <li
-                className={`p-3 ${styles.todocontent} ${styles.liele}`}
+                className={`pl-3 ${styles.todocontent} ${styles.liele}`}
                 style={
                   dataValue.isCompleted
                     ? { textDecoration: 'line-through' }
@@ -136,9 +134,9 @@ function Todo({ date, Month }) {
               <div className="is-pulled-right">
                 <Button
                   onClick={() => handleUpdate(index)}
-                  classes={`button is-primary ${styles.editbutton}`}
-                  textContent="Edit"
+                  classes={`fas fa-edit ${styles.editbutton}`}
                 />
+
                 <Button
                   onClick={() => handleDelete(index)}
                   classes="delete button is-danger"

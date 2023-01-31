@@ -1,4 +1,7 @@
-.Modal {
-  width: 35%;
-  height: auto;
+.modal-card-footer {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top: 1px solid #dbdbdb;
+  background-color: whitesmoke;
+  padding: 20px;
 }

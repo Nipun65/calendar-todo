@@ -1,5 +1,5 @@
 .header {
-  background-color: aqua;
+  background-color: rgba(238, 113, 248, 0.8);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,33 +13,27 @@
 }
 
 .btnHover :hover {
-  background-color: #72a3a6;
+  background-color: #00d1b2;
 }
 
 ul {
   background-color: white !important;
-  transition: none !important;
 }
 
-.dropdown {
-  float: left;
-}
 .first-div {
-  order: 1;
   flex-basis: 25%;
   text-align: left;
   display: inline-flex;
   justify-content: space-evenly;
 }
+
 .second-div {
-  order: 2;
   flex-basis: 50%;
   text-align: center;
 }
+
 .third-div {
-  order: 3;
   flex-basis: 25%;
-  text-align: right;
   display: inline-flex;
   justify-content: space-evenly;
 }
@@ -53,8 +47,6 @@ ul {
 
 @media only screen and (max-width: 1200px) {
   .btn {
-    background-color: transparent;
-    border: none;
     font-size: 23px;
   }
 }
@@ -65,8 +57,6 @@ ul {
     font-size: 13px;
   }
   .btn {
-    background-color: transparent;
-    border: none;
     font-size: 19px;
   }
 }
@@ -77,8 +67,6 @@ ul {
     font-size: 10px;
   }
   .btn {
-    background-color: transparent;
-    border: none;
     font-size: 16px;
   }
 }

@@ -12,7 +12,7 @@ function Card({ data, setValue }) {
         <div
           role="presentation"
           onClick={valueHandler}
-          className={styles.element}
+          className={`${styles.element} is-clickable is-flex`}
           key={Math.random()}
           type="button"
         >

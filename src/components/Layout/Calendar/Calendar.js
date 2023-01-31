@@ -27,7 +27,7 @@ function Calendar() {
   const history = useNavigate();
   const location = useLocation();
 
-  // updating the view and years array
+  // updates the view and years state. if view is multiyears then years state contains all decade years. in years view it contains one decade
   const handleView = (value) => {
     setView(value);
     let currentYear = 0;
@@ -144,7 +144,7 @@ function Calendar() {
     }
   };
 
-  // set the years array when first time component render
+  // set the years array when first time component render it will be used in Card component years view to show years and validate browser url if the url is not correct it'll redirect to today's date
   useEffect(() => {
     const yearsArray = [];
     let Currentyear = date.year;
@@ -320,7 +320,6 @@ function Calendar() {
           date.selectedDate.userDate -= 1;
         }
       }
-      date.date = date.selectedDate.userDate;
       date.month = date.selectedDate.userMonth;
       date.year = date.selectedDate.userYear;
       setDate({ ...date });
@@ -411,19 +410,19 @@ function Calendar() {
       <Header
         setValue={handleValue}
         setView={handleView}
+        setSelectedOption={handleOption}
+        setToday={handleToday}
         date={date}
         view={view}
         selectedOption={selectedOption}
-        setSelectedOption={handleOption}
-        setToday={handleToday}
       />
 
       {view === 'date' && selectedOption !== 'Year' && (
         <Daydate
           setValue={handleValue}
+          setView={handleView}
           date={date}
           selectedOption={selectedOption}
-          setView={handleView}
         />
       )}
 
@@ -434,6 +433,7 @@ function Calendar() {
             .map((value, index) => renderElements(value, index))}
         </div>
       )}
+      {/* Card component renders the data. if it's months view then it's will show all months and years view it will show years state */}
       {view !== 'date' && view !== 'day' && (
         <Card
           data={view === 'months' ? MONTHS : years}

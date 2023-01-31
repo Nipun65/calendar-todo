@@ -2,12 +2,12 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  padding-bottom: 1.1em;
+  padding: 15px 0;
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }
+
 .days-ele {
   display: flex;
   justify-content: center;
@@ -17,11 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   height: 85px;
-}
-.array-element :hover {
-  background-color: azure;
 }
 
 .array {
@@ -37,11 +33,15 @@
   grid-template-rows: repeat(7, 1fr);
   height: 50px;
 }
+
+.parent-element:hover {
+  background-color: rgb(60, 64, 67, 0.1);
+}
+
 .array-element-year {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   height: 50px;
 }
 
@@ -55,10 +55,6 @@
   padding: 10px;
 }
 
-.main-div {
-  height: fit-content;
-}
-
 .grid-item {
   border: 1px solid black;
   padding: 18px 18px;
@@ -70,7 +66,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    padding-bottom: 1.1em;
     font-size: 1.1rem;
   }
 }
@@ -80,7 +75,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    padding-bottom: 1.1em;
     font-size: 1rem;
   }
 }
@@ -90,7 +84,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    padding-bottom: 1.1em;
     font-size: 0.9rem;
   }
 }
