@@ -199,7 +199,7 @@ function Header({
   };
 
   return (
-    <div className={styles.header}>
+    <div className={styles.header} data-testid="header">
       <div className={`${styles.btnHover} ${styles['first-div']}`}>
         {view !== 'multiyears' && (
           <Button
@@ -262,7 +262,5 @@ function Header({
     </div>
   );
 }
-Header.defaultProps = {
-  date: {},
-};
+
 export default Header;

@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match the snapshot 1`] = `
-<div>
+<div
+  data-testid="dropdown"
+>
   <button
     className="button is-primary is-clickable"
+    data-testid="button"
     onClick={[Function]}
     type="button"
   >

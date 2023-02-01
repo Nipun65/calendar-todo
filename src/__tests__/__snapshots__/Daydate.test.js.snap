@@ -3,6 +3,7 @@
 exports[`should match the snapshot 1`] = `
 <div
   className="main-div "
+  data-testid="daydate"
 >
   <div
     className="days"
@@ -48,114 +49,397 @@ exports[`should match the snapshot 1`] = `
       className="array"
     >
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          1
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          2
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          3
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          4
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          5
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          6
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          7
+        </div>
+      </div>
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          8
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          9
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          10
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          11
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          12
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          13
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          14
+        </div>
+      </div>
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          15
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          16
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          17
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          18
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          19
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          20
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          21
+        </div>
+      </div>
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          22
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          23
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          24
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          25
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          26
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          27
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          28
+        </div>
+      </div>
     </div>
     <div
       className="array"
     >
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          29
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={Object {}}
+        >
+          30
+        </div>
+      </div>
       <div
-        className="array-element "
-      />
+        className="parent-element"
+      >
+        <div
+          className="array-element is-clickable hover-element"
+          onClick={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "backgroundColor": "#4c7bde5c",
+            }
+          }
+        >
+          31
+        </div>
+      </div>
       <div
         className="array-element "
       />

@@ -55,6 +55,7 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
       className={`${styles['main-div']} ${
         selectedOption === 'Year' ? styles['grid-item'] : ''
       }`}
+      data-testid="daydate"
     >
       {selectedOption === 'Year' && (
         <div className={styles.month}>{month[date.month]}</div>
@@ -69,18 +70,20 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
       <div>
         {daywisedates.map((value) => (
           <div
+            key={Math.random()}
             className={`${
               selectedOption === 'Year' ? styles['array-year'] : styles.array
             }`}
-            key={Math.random()}
           >
             {value.map((dateValue) => {
               if (dateValue) {
                 return (
-                  <div className={`${styles['parent-element']}`}>
+                  <div
+                    key={Math.random()}
+                    className={`${styles['parent-element']}`}
+                  >
                     <div
                       role="presentation"
-                      key={Math.random()}
                       className={`${
                         selectedOption === 'Year'
                           ? styles['array-element-year']
@@ -114,7 +117,4 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
   );
 }
 
-Daydate.defaultProps = {
-  date: {},
-};
 export default Daydate;
