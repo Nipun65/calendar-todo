@@ -77,10 +77,12 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
             {value.map((dateValue) => {
               if (dateValue) {
                 return (
-                  <div className={`${styles['parent-element']}`}>
+                  <div
+                    className={`${styles['parent-element']}`}
+                    key={Math.random()}
+                  >
                     <div
                       role="presentation"
-                      key={Math.random()}
                       className={`${
                         selectedOption === 'Year'
                           ? styles['array-element-year']
