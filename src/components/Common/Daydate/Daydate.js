@@ -1,10 +1,9 @@
 import styles from './Daydate.module.css';
+import { DAYS } from '../../../utils/Constants.utils';
 
-function Daydate({ date, setValue, selectedOption, month }) {
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+function Daydate({ date, setValue, selectedOption, month, setView }) {
   const startYear = date.year;
   const startMonth = date.month;
-
   const daywisedates = Array(6)
     .fill()
     .map(() => Array(7).fill(0));
@@ -36,6 +35,7 @@ function Daydate({ date, setValue, selectedOption, month }) {
       userDate: +event.target.textContent,
     };
     setValue(date);
+    setView('day');
   };
 
   // style for setting today's date and user selected date
@@ -56,6 +56,7 @@ function Daydate({ date, setValue, selectedOption, month }) {
 
     return {};
   };
+
   return (
     <div
       className={`${styles['main-div']} ${
@@ -66,7 +67,7 @@ function Daydate({ date, setValue, selectedOption, month }) {
         <div className={styles.month}>{month[date.month]}</div>
       )}
       <div className={styles.days}>
-        {days.map((value) => (
+        {DAYS.map((value) => (
           <div key={Math.random()} className={styles['days-ele']}>
             {value}
           </div>
