@@ -45,15 +45,8 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
       date.date === dateValue &&
       date.currentYear === +date.year
     ) {
-      return { backgroundColor: '#81d5ea' };
+      return { backgroundColor: '#4c7bde5c' };
     }
-    if (
-      date.selectedDate?.userDate === dateValue &&
-      date.month === date.selectedDate.userMonth
-    ) {
-      return { backgroundColor: 'rgb(201,234,255)', opacity: 0.5 };
-    }
-
     return {};
   };
 
@@ -68,7 +61,7 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
       )}
       <div className={styles.days}>
         {DAYS.map((value) => (
-          <div key={Math.random()} className={styles['days-ele']}>
+          <div key={Math.random()} className={`${styles['days-ele']}`}>
             {value}
           </div>
         ))}
@@ -85,22 +78,35 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
               if (dateValue) {
                 return (
                   <div
-                    role="presentation"
+                    className={`${styles['parent-element']}`}
                     key={Math.random()}
-                    className={`${
-                      selectedOption === 'Year'
-                        ? styles['array-element-year']
-                        : styles['array-element']
-                    }`}
-                    onClick={dateHandler}
-                    style={getStyle(dateValue)}
                   >
-                    {dateValue}
+                    <div
+                      role="presentation"
+                      className={`${
+                        selectedOption === 'Year'
+                          ? styles['array-element-year']
+                          : styles['array-element']
+                      } is-clickable ${
+                        dateValue !== 0 ? styles['hover-element'] : ''
+                      }`}
+                      onClick={dateHandler}
+                      style={getStyle(dateValue)}
+                    >
+                      {dateValue}
+                    </div>
                   </div>
                 );
               }
               return (
-                <div key={Math.random()} className={styles['array-element']} />
+                <div
+                  key={Math.random()}
+                  className={`${
+                    selectedOption === 'Year'
+                      ? styles['array-element-year']
+                      : styles['array-element']
+                  } `}
+                />
               );
             })}
           </div>

@@ -8,14 +8,14 @@ exports[`should match the snapshot 1`] = `
     className="btnHover first-div"
   >
     <button
-      className="btn"
+      className="btn is-clickable"
       onClick={[Function]}
       type="button"
     >
       &lt;&lt;
     </button>
     <button
-      className="btn"
+      className="btn is-clickable"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -26,7 +26,7 @@ exports[`should match the snapshot 1`] = `
       className="todaybtn-div"
     >
       <button
-        className="todaybtn"
+        className="todaybtn button is-primary is-clickable"
         onClick={[Function]}
         type="button"
       >
@@ -39,7 +39,7 @@ exports[`should match the snapshot 1`] = `
          btnHover second-div"
   >
     <button
-      className="btn"
+      className="btn btnHover is-size-6-mobile is-size-5-tablet is-size-4-desktop is-clickable"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -48,30 +48,38 @@ exports[`should match the snapshot 1`] = `
   <div
     className="third-div btnHover"
   >
-    <div
-      className="dropdown"
-    >
-      <div
-        className="dropdown"
+    <div>
+      <button
+        className="button is-primary is-clickable"
+        onClick={[Function]}
+        type="button"
       >
-        <button
-          className="titlebutton"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="textContent"
         >
-          Month
-        </button>
-      </div>
+          <span>
+            Month
+          </span>
+          <span
+            className="icon is-small"
+          >
+            <i
+              aria-hidden="true"
+              className="fas fa-angle-down"
+            />
+          </span>
+        </div>
+      </button>
     </div>
     <button
-      className="btn"
+      className="btn is-clickable"
       onClick={[Function]}
       type="button"
     >
       &gt;
     </button>
     <button
-      className="btn"
+      className="btn is-clickable"
       onClick={[Function]}
       type="button"
     >

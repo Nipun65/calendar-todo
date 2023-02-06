@@ -1,5 +1,5 @@
 .header {
-  background-color: aqua;
+  background-color: #4c7bde5c;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,42 +13,60 @@
 }
 
 .btnHover :hover {
-  background-color: #72a3a6;
+  background-color: #00d1b2;
 }
 
 ul {
   background-color: white !important;
-  transition: none !important;
 }
 
-.dropdown {
-  float: left;
-}
 .first-div {
-  order: 1;
   flex-basis: 25%;
   text-align: left;
   display: inline-flex;
   justify-content: space-evenly;
 }
+
 .second-div {
-  order: 2;
   flex-basis: 50%;
   text-align: center;
 }
+
 .third-div {
-  order: 3;
   flex-basis: 25%;
-  text-align: right;
   display: inline-flex;
   justify-content: space-evenly;
 }
 
 .todaybtn {
-  padding-right: 10px;
   background: transparent;
   width: 100px;
   padding: 10px;
   font-size: 16px;
-  opacity: 1.8;
+}
+
+@media only screen and (max-width: 1200px) {
+  .btn {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .todaybtn {
+    width: 70px;
+    font-size: 13px;
+  }
+  .btn {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .todaybtn {
+    width: 50px;
+    font-size: 10px;
+  }
+  .btn {
+    font-size: 16px;
+  }
 }

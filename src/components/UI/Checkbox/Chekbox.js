@@ -1,5 +1,3 @@
-import styles from './Checkbox.module.css';
-
 function Checkbox({ onClick, classes, checked }) {
   const handleClick = () => {
     onClick();
@@ -10,7 +8,7 @@ function Checkbox({ onClick, classes, checked }) {
       type="checkbox"
       checked={checked}
       onClick={handleClick}
-      className={`${classes} ${styles.checkbox}`}
+      className={`${classes} is-clickable`}
       readOnly
     />
   );

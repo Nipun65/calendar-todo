@@ -1,23 +1,66 @@
-.linethrough {
-  text-decoration: line-through;
-}
-
-.input-div {
-  display: flex;
-  flex-direction: column;
-}
-
-.background-color {
-  background-color: lightgray;
+.todo-div {
+  background-color: #4c7bde5c;
   width: 50%;
-  margin: 20px auto;
-  word-break: break-all;
+  border-radius: 38px;
 }
 
 .editbutton {
-  margin: -8px 15px 0px 0px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #0d47a1;
 }
 
-.required {
-  float: left;
+.liele {
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  width: 80%;
+}
+
+.main-div {
+  display: grid;
+  place-items: center;
+}
+
+.addtodobtn {
+  width: 120px;
+}
+
+.inputdiv {
+  max-width: 880px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .addtodobtn {
+    width: 120px;
+  }
+
+  .liele {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .addtodobtn {
+    width: 100px;
+  }
+
+  .liele {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .addtodobtn {
+    width: 80px;
+  }
+
+  .liele {
+    width: 50%;
+  }
+}
+
+.todocontent {
+  display: inline-flex !important;
 }

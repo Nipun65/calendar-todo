@@ -219,7 +219,7 @@ function Header({
         <div className={styles['todaybtn-div']}>
           <Button
             onClick={handleToday}
-            classes={styles.todaybtn}
+            classes={`${styles.todaybtn} button is-primary`}
             textContent="Today"
           />
         </div>
@@ -232,31 +232,29 @@ function Header({
       >
         <Button
           onClick={viewHandler}
-          classes={styles.btn}
+          classes={`${styles.btn} ${styles.btnHover} is-size-6-mobile is-size-5-tablet is-size-4-desktop`}
           textContent={getYearData()}
           disabled={view === 'multiyears'}
         />
       </div>
 
       <div className={`${styles['third-div']} ${styles.btnHover}`}>
-        <div className={styles.dropdown}>
-          <Dropdown
-            view={view}
-            option={DROPDOWNLIST}
-            setValue={selectedOptionHandler}
-          />
-        </div>
+        <Dropdown
+          view={view}
+          option={DROPDOWNLIST}
+          setValue={selectedOptionHandler}
+        />
 
         <Button
           onClick={forwardMonthHandler}
-          classes={styles.btn}
+          classes={`${styles.btn}`}
           textContent=">"
         />
 
         {view !== 'multiyears' && (
           <Button
             onClick={forwardYearHandler}
-            classes={styles.btn}
+            classes={`${styles.btn}`}
             textContent=">>"
           />
         )}
