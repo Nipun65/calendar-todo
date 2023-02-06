@@ -2,27 +2,19 @@ import renderer from 'react-test-renderer';
 import { render, screen, cleanup } from '@testing-library/react';
 import Daydate from '../components/Common/Daydate/Daydate';
 import '@testing-library/jest-dom/extend-expect';
-
-const date = {
-  year: 2023,
-  month: 0,
-  date: 31,
-  currentMonth: 0,
-  currentYear: 2023,
-  selectedDate: { userYear: 2023, userMonth: 0, userDate: 31 },
-};
+import { DATE } from '../utils/Constants.utils';
 
 afterEach(() => {
   cleanup();
 });
 
 it('should match the snapshot', () => {
-  const tree = renderer.create(<Daydate date={date} />).toJSON();
+  const tree = renderer.create(<Daydate date={DATE} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 it('should render Card Component', () => {
-  render(<Daydate date={date} />);
+  render(<Daydate date={DATE} />);
   const mainDiv = screen.getByTestId('daydate');
   expect(mainDiv).toBeInTheDocument();
 

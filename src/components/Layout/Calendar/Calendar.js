@@ -397,7 +397,7 @@ function Calendar() {
         className={styles['grid-item']}
         setValue={handleValue}
         date={dateObj}
-        month={MONTHS}
+        MONTHS={MONTHS}
         selectedOption={selectedOption}
         key={Math.random()}
         setView={handleView}
