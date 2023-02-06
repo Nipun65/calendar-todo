@@ -20,7 +20,7 @@ function DialogBox({ open, setModal, editValue, currentValue, title }) {
   return (
     <>
       {open && (
-        <div className="modal is-active">
+        <div className="modal is-active" data-testid="modal">
           <div className="modal-background" />
           <div className="modal-card">
             <header className="modal-card-head">
@@ -44,7 +44,7 @@ function DialogBox({ open, setModal, editValue, currentValue, title }) {
                 textContent="Update"
                 classes="button is-primary is-pulled-right"
                 onClick={handleUpdate}
-                disabled={!inputValue.length}
+                disabled={!inputValue?.length}
               />
             </footer>
           </div>

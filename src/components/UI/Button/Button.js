@@ -9,6 +9,7 @@ function Button({ onClick, classes, disabled, textContent }) {
       className={`${classes} is-clickable`}
       disabled={disabled}
       type="button"
+      data-testid="button"
     >
       {textContent}
     </button>

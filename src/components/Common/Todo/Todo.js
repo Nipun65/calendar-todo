@@ -77,7 +77,10 @@ function Todo({ date, Month }) {
 
   return (
     <>
-      <div className="has-text-centered pt-4 is-size-4-mobile is-size-3-tablet is-size-2-desktop has-text-weight-bold">
+      <div
+        className="has-text-centered pt-4 is-size-4-mobile is-size-3-tablet is-size-2-desktop has-text-weight-bold"
+        data-testid="todo"
+      >
         To-do List
       </div>
       <div className="has-text-centered p-6">
@@ -156,7 +159,7 @@ function Todo({ date, Month }) {
       )}
 
       {(!todoObj[todayDate] || !todoObj[todayDate].length) && (
-        <div className="has-text-centered subtitle is-4  has-text-weight-bold">
+        <div className="has-text-centered subtitle is-4 has-text-weight-bold">
           No Todos Yet
         </div>
       )}

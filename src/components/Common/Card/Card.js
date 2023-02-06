@@ -7,7 +7,7 @@ function Card({ data, setValue }) {
   };
 
   return (
-    <div className={styles.viewgrid}>
+    <div className={styles.viewgrid} data-testid="card">
       {data.map((dataValue) => (
         <div
           role="presentation"
@@ -23,5 +23,4 @@ function Card({ data, setValue }) {
   );
 }
 
-Card.defaultProps = { data: [] };
 export default Card;

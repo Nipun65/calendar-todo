@@ -14,7 +14,7 @@ function Dropdown({ option, setValue }) {
   };
 
   return (
-    <div>
+    <div data-testid="dropdown">
       <Button
         onClick={() => setShowMenu(!showMenu)}
         classes="button is-primary"
