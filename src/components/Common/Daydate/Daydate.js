@@ -79,8 +79,8 @@ function Daydate({ date, setValue, selectedOption, month, setView }) {
               if (dateValue) {
                 return (
                   <div
-                    key={Math.random()}
                     className={`${styles['parent-element']}`}
+                    key={Math.random()}
                   >
                     <div
                       role="presentation"
