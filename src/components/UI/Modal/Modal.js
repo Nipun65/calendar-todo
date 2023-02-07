@@ -9,9 +9,11 @@ function DialogBox({ open, setModal, editValue, currentValue, title }) {
     open = false;
     setModal(false);
   };
+
   const changeHandler = (value) => {
     setInputValue(value.target.value);
   };
+
   const handleUpdate = () => {
     editValue(inputValue);
     setModal(false);
