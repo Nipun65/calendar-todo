@@ -228,11 +228,11 @@ function Header({
         className={`
          ${view !== 'multiyears' ? styles.btnHover : ''} ${
           styles['second-div']
-        }`}
+        } w-fit`}
       >
         <Button
           onClick={viewHandler}
-          classes={`${styles.btn} ${styles.btnHover} is-size-6-mobile is-size-5-tablet is-size-4-desktop`}
+          classes={`${styles.btn} ${styles.btnHover} is-size-7-mobile is-size-6-tablet is-size-4-desktop p-0`}
           textContent={getYearData()}
           disabled={view === 'multiyears'}
         />

@@ -45,7 +45,7 @@ function Daydate({ date, setValue, selectedOption, MONTHS, setView }) {
       date.date === dateValue &&
       date.currentYear === +date.year
     ) {
-      return { backgroundColor: '#4c7bde5c' };
+      return { backgroundColor: '#95638e4d' };
     }
     return {};
   };

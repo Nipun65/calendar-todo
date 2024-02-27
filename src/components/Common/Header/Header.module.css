@@ -1,5 +1,5 @@
 .header {
-  background-color: #4c7bde5c;
+  background-color: #95638e4d;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 .btnHover :hover {
-  background-color: #00d1b2;
+  background-color: transparent;
 }
 
 ul {
@@ -21,21 +21,27 @@ ul {
 }
 
 .first-div {
-  flex-basis: 25%;
+  flex-basis: 30%;
   text-align: left;
-  display: inline-flex;
+  display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .second-div {
-  flex-basis: 50%;
+  display: flex;
+  flex-basis: 40%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 40%;
 }
 
 .third-div {
-  flex-basis: 25%;
-  display: inline-flex;
+  flex-basis: 30%;
+  display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .todaybtn {
@@ -54,7 +60,7 @@ ul {
 @media only screen and (max-width: 900px) {
   .todaybtn {
     width: 70px;
-    font-size: 13px;
+    font-size: 15px !important;
   }
   .btn {
     font-size: 19px;
@@ -64,7 +70,7 @@ ul {
 @media only screen and (max-width: 600px) {
   .todaybtn {
     width: 50px;
-    font-size: 10px;
+    font-size: 14px !important;
   }
   .btn {
     font-size: 16px;

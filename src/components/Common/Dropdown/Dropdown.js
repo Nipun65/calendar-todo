@@ -17,7 +17,7 @@ function Dropdown({ option, setValue }) {
     <div data-testid="dropdown">
       <Button
         onClick={() => setShowMenu(!showMenu)}
-        classes="button is-primary"
+        classes={`button is-primary ${styles.dropdown_btn} ${styles.dropdown_wrapper}`}
         textContent={
           <div className={`${styles.textContent}`}>
             <span>{selectedOption}</span>
